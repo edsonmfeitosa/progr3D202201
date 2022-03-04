@@ -7,6 +7,8 @@ public class movimentoBolinha : MonoBehaviour
     public float movX;
     public float movZ;
     public float velocidade;
+    [SerializeField]
+    private float forca_Pulo;
 
     public KeyCode paraFrente;
     public KeyCode paraTraz;
@@ -64,7 +66,7 @@ public class movimentoBolinha : MonoBehaviour
         //pulo da bolinha
         if (Input.GetKeyDown(KeyCode.Space) && podePular)
         {
-            fisica.AddForce(Vector3.up * velocidade, ForceMode.Impulse);
+            fisica.AddForce(Vector3.up * forca_Pulo, ForceMode.Impulse);
         }
 
     }
