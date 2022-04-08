@@ -8,6 +8,10 @@ public class MiraController : MonoBehaviour
     public GameObject MiraLaser;
     public KeyCode habilitaLaser;
     bool laserHabilitado = false;
+    [Header("Luneta")]
+    public KeyCode habilitaLuneta;
+    bool lunetaHabilitada = false;
+    public Camera CameraLuneta;
     void Start()
     {
         
@@ -27,6 +31,18 @@ public class MiraController : MonoBehaviour
             else
             {
                 MiraLaser.SetActive(false);
+            }
+        }
+        if (Input.GetKeyDown(habilitaLuneta))
+        {
+            lunetaHabilitada = !lunetaHabilitada;
+            if (lunetaHabilitada)
+            {
+                CameraLuneta.depth = 1;
+            }
+            else
+            {
+                CameraLuneta.depth = 0;
             }
         }
     }
