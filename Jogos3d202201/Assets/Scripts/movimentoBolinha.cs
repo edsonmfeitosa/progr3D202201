@@ -17,14 +17,37 @@ public class movimentoBolinha : MonoBehaviour
     Rigidbody fisica;
 
     bool podePular = false;
+
+    public AudioClip somPulo;
+    public AudioClip somItem;
+    AudioSource audio;
+
+    public Pontuacao pt;
+
     void Start()
     {
         fisica = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
     }
 
     
     void Update()
     {
+        if (pt.pegouTesouro)
+        {
+            //if (!audio.isPlaying)
+            //{
+                //audio.clip = somItem;
+                //audio.Play();
+                //audio.Stop();
+                //audio.Pause();
+                audio.PlayOneShot(somItem);
+            //}
+            
+            pt.pegouTesouro = false;
+        }
+
+
         #region 1ª maneira de pegar o valor do jogador
         //movX = Input.GetAxis("Horizontal");
         //movZ = Input.GetAxis("Vertical");
@@ -67,6 +90,14 @@ public class movimentoBolinha : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && podePular)
         {
             fisica.AddForce(Vector3.up * forca_Pulo, ForceMode.Impulse);
+            //som do pulo
+            //if (!audio.isPlaying)
+            //{
+            //    audio.clip = somPulo;
+            //    audio.Play();
+            //}
+            audio.PlayOneShot(somPulo);
+            
         }
 
     }

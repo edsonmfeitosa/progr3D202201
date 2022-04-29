@@ -8,6 +8,8 @@ public class Pontuacao : MonoBehaviour
     private int quantidade = 0;
     public float tempo = 0;
     public Text txtTempo;
+    
+    public bool pegouTesouro = false;
     void Start()
     {
         
@@ -24,6 +26,7 @@ public class Pontuacao : MonoBehaviour
     {
         if (other.tag == "tesouro")
         {
+            pegouTesouro = true;
             quantidade++;
             Destroy(other.gameObject);
             print("Quantidade de itens: " + quantidade);
